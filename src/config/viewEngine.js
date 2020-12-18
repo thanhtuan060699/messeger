@@ -1,6 +1,6 @@
 import express from "express";
 import expressEjsExtend from "express-ejs-extend"
-import { model } from "mongoose";
+
 
 let configViewEngine=(app)=>{
     app.use(express.static("./src/public"))

@@ -14,14 +14,14 @@ let removeRequestContact = (io) =>{
         else{
             clients[currenUserId]=[socket.id]
         }
-        socket.on("remove-request-contact",(data)=>{
+        socket.on("remove-request-contact-sent",(data)=>{
             let currentUSer={
                 id : socket.request.user._id
             }
             //emit notification
             if(clients[data.contactId]){
                 clients[data.contactId].forEach(socketId=>{
-                    io.sockets.connected[socketId].emit("response-remove-request-contact",currentUSer)
+                    io.sockets.connected[socketId].emit("response-remove-request-contact-sent",currentUSer)
                 })
             }
            

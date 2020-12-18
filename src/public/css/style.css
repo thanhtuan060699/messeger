@@ -197,7 +197,7 @@ label:focus,
 .contactPanel .user-talk,
 .contactPanel .user-remove-contact,
 .contactPanel .user-remove-request-contact,
-.contactPanel .user-acccept-contact-received,
+.contactPanel .user-appprove-request-contact-received,
 .contactPanel .user-remove-request-sent,
 .contactPanel .user-reject-request-contact-received {
   box-sizing: border-box;
@@ -278,7 +278,6 @@ label:focus,
 }
 
 .noti_contact_counter {
-  display: none;
   position: absolute;
   background: #E1141E;
   color: #FFF;
@@ -679,7 +678,7 @@ label:focus,
 }
 
 .left a.create-group-chat {
-  display: none;
+  display: block;
   float: left;
   width: 40px;
   height: 40px;
@@ -1111,6 +1110,13 @@ label:focus,
   float: left;
 }
 
+.right .bubble.me img.avatar-small {
+  margin-left: 10px;
+}
+.right .bubble.you img.avatar-small {
+  margin-right: 10px;
+}
+
 .right .bubble.me a {
   float: left;
   border-bottom: 1.5px solid #c8d6e5;
@@ -1314,4 +1320,17 @@ label:focus,
 }
 .read-more-notif{
   text-align: center;
+}
+.read-more-contacts{
+  text-align: center;
+}
+.read-more-contact-sent{
+  text-align: center;
+}
+.read-more-contact-received{
+  text-align: center;
+}
+#screen-chat{
+  width: 100%;
+  height: 100%;
 }

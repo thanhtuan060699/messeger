@@ -1,7 +1,7 @@
 import nodeMailer from "nodemailer"
 
 let MAIL_USER="nguyenthanhhlal123@gmail.com"
-let MAIL_PASSWORD="nghia21112002"
+let MAIL_PASSWORD="thanhnghia21112002"
 let MAIL_HOST ="smtp.gmail.com"
 let MAIL_PORT = "587"
 

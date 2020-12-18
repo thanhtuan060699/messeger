@@ -34,6 +34,9 @@ NotificationSchema.statics = {
                 {"isRead" : false}
             ]
         }).exec()
+    },
+    readMore(currentUserId, skip ,limit){
+        return this.find({"receiverId" : currentUserId}).sort({"createdAt" :1}).skip(skip).limit(limit).exec()
     }
 }
 

@@ -1,5 +1,5 @@
 import express from "express"
-import {home,auth,user,contact,notification} from "./../controllers/index"
+import {home,auth,user,contact,notification,message} from "./../controllers/index"
 import {authValid} from "./../validation/index"
 import passport from 'passport'
 import initPassportLocal from './../controllers/passportController/local'
@@ -33,8 +33,12 @@ let initRouters=(app)=>{
     router.put("/user/update-info",user.updateUserInfo)
     router.get("/contact/find-user/:keyword",contact.findUsersContact)
     router.post("/contact/add-new",contact.addNewContact)
-    router.delete("/contact/remove-request-contact",contact.removeRequestContact)
+    router.delete("/contact/remove-request-contact-sent",contact.removeRequestContactSent)
     router.get("/notification/read-more",notification.readMore)
+    router.delete("/contact/remove-request-contact-received",contact.removeRequestContactReceived)
+    router.put("/contact/approve-request-contact-received",contact.approveRequestContactReceived)
+
+    router.post("/message/add-new-text-emoji",message.addNewTextEmoji)
     return app.use("/",router)
 
     
