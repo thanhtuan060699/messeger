@@ -13,7 +13,7 @@ let removeRequestContactReceived = (io) =>{
             let currentUser ={
                 id : socket.request.user._id
             }
-            console.log("AAa")
+    
             //emit 
             if(clients[data.contactId]){
                 clients[data.contactId].forEach((socketId)=>{

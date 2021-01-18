@@ -3,7 +3,6 @@ import ContactModel from "./../models/contactModel"
 import UserModel from "./../models/userModel"
 import MessageModel from "./../models/messangeModel"
 
-import { reject, resolve } from "bluebird"
 
 const LIMIT_CONVERSATIONS_TAKEN = 15
 const LIMIT_MESSAGES_TAKEN = 30
