@@ -589,7 +589,7 @@ label:focus,
 }
 
 .container-fluid .row.content {
-  height: 91vh;
+  height: 100vh;
 }
 
 .no-padding {
@@ -787,14 +787,25 @@ label:focus,
   float: left;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  background-color: #eff7fe;
 }
 
 .right .top {
-  width: 100%;
-  height: 8%;
+  width: 60%;
+  height: 11%;
   padding: 15px 29px;
-  background-color: #eceff1;
+  background-color: white;
+  position: fixed;
+  top: 73px;
+  z-index: 1;
+  margin-top: -28px;
+  margin-left: 41px;
+  border: 1px solid white;
+  border-radius: 18px;
+}
+
+.custom-scroll {
+  scroll-behavior: smooth;
 }
 
 .right .top span {
@@ -818,7 +829,7 @@ label:focus,
   width: 100%;
   height: 80%;
   padding: 15px 29px;
-  background-color: #fff;
+  background-color: #eff7fe;
 }
 
 .right .chat {
@@ -826,9 +837,6 @@ label:focus,
   overflow: auto;
   position: relative;
   padding: 0 35px 10px;
-  border-width: 1px 1px 1px 0;
-  border-style: solid;
-  border-color: #e6e6e6;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
@@ -836,11 +844,13 @@ label:focus,
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  margin-top: 120px;
+  background-color: #eff7fe;
 }
 
-#image-chat,
-#attach-chat {
-  display: none;
+.image-chat,
+.attach-chat {
+  display: none !important;
 }
 
 .room-chat:hover,
@@ -987,7 +997,7 @@ label:focus,
   padding-left: 8px;
   border: 1px solid #e6e6e6;
   background-color: #eceff1;
-  width: 98%;
+  width: 94%;
   border-radius: 5px;
   margin: 0 1% 0 1%;
 }
@@ -1333,4 +1343,72 @@ label:focus,
 #screen-chat{
   width: 100%;
   height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e5e9; 
+  box-shadow: inset 0 0 5px #d0e2ec;
+  border-radius: 4px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #9dc1d6; 
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888; 
+}
+
+.logo-home img {
+  width: 62px;
+}
+
+.col-sm-1.control-bar {
+  height: 100%;
+  background: white;
+}
+
+.logo-home {
+  text-align: center;
+  margin-top: 23px;
+}
+
+.col-sm-12.icon-btn i {
+  margin-left: -5px;
+  margin-top: 7px;
+  color: #223645 !important;
+}
+
+.col-sm-12.icon-btn {
+  text-align: center;
+  font-size: 23px;
+  border: 1px solid white;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  margin-left: 33px;
+  background: #d3d8db !important;
+  margin-top: 36px;
+}
+
+.col-sm-3.notification-right {
+  background: white;
+  height: 100%;
+  border-left: 1px solid black;
+}
+
+h2 {
+  font-family: "Montserrat",sans-serif;
+  font-size: calc(20px + (28 - 20) * ((100vw - 320px) / (1920 - 320)));
+  font-weight: 800;
+  color: #223645;
+  margin: 0;
 }

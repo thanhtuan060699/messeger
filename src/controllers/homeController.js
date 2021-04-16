@@ -1,5 +1,36 @@
 import {notification,contact,message} from "./../services/index"
 import {bufferToBase64} from "./../helpers/clientHelper"
+import request from "request"
+
+let getICETurnServer = () =>{
+    return new Promise( async (resolve, reject)=>{
+        // Node Get ICE STUN and TURN list
+        let o = {
+            format: "urls"
+        };
+
+        let bodyString = JSON.stringify(o);
+        let options = {
+            url : "https://global.xirsys.net/_turn/chat-real",
+            method: "PUT",
+            headers: {
+                "Authorization": "Basic " + Buffer.from("thanhtuanhlal:143bd092-9773-11eb-ae32-0242ac150002").toString("base64"),
+                "Content-Type": "application/json",
+                "Content-Length": bodyString.length
+            }
+        };
+        // request(options,function(error, response, body){
+        //     if(error){
+        //         console.log(error)
+        //         return reject(error)
+        //     }
+        //     let bodyJson = JSON.parse(body)
+        //     resolve(bodyJson.v.iceServers)
+        // })
+        resolve(null)
+    })
+}
+ 
 
 let getHome= async (req,res)=>{
     //only 10 items one time
@@ -18,14 +49,14 @@ let getHome= async (req,res)=>{
     let contactsReceived = await contact.getContactsReceived(req.user._id)
 
     //count contacts
-    let countAllContacts = await contact.countAllContacts(req.user._id)
-    let countAllContactsSent = await contact.countAllContactsSent(req.user._id)
-    let countAllContactsReceived = await contact.countAllContactsReceived(req.user._id)
+    let countAllContacts = await contact.countAllContacts(req.user._id);
+    let countAllContactsSent = await contact.countAllContactsSent(req.user._id);
+    let countAllContactsReceived = await contact.countAllContactsReceived(req.user._id);
+    let getAllConversationItems = await message.getAllConversationItems(req.user._id);
 
-    let getAllConversationItems = await message.getAllConversationItems(req.user._id)
-
-    let userConversations = getAllConversationItems.userConversations
-    let allConversationWithMessages = getAllConversationItems.allConversationWithMessages
+    let userConversations = getAllConversationItems.userConversations;
+    let allConversationWithMessages = getAllConversationItems.allConversationWithMessages;
+    let iceServerList = await getICETurnServer();
 
     return res.render("main/master",{
         errors : req.flash("errors"),
@@ -41,11 +72,14 @@ let getHome= async (req,res)=>{
         countAllContactsReceived : countAllContactsReceived,
         userConversations : userConversations,
         allConversationWithMessages : allConversationWithMessages,
-        bufferToBase64 : bufferToBase64
+        bufferToBase64 : bufferToBase64,
+        iceServerList : JSON.stringify(iceServerList)
     })
 
 
 }
+
+
 
 module.exports={
     getHome : getHome,

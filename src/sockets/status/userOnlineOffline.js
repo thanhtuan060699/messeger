@@ -2,7 +2,7 @@
  * 
  * @param io from socket.io lib
  */
-let chatTextEmoji = (io) =>{
+ let userOnlineOffline = (io) =>{
     let clients={}
     io.on("connection",(socket)=>{
 
@@ -37,4 +37,4 @@ let chatTextEmoji = (io) =>{
     })
 }
 
-module.exports = chatTextEmoji
+module.exports = userOnlineOffline

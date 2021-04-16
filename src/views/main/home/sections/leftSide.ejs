@@ -1,57 +1,50 @@
-<div class="col-sm-3 sidenav no-padding">
+<div class="col-sm-1 control-bar">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="logo-home">
+                <a href="/">
+                    <img src="images/custom/logo.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 icon-btn">
+            <a href="#"  id="noti_Button"> 
+                <i class="fa fa-globe"></i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 icon-btn">
+            <a href="#contactsModal" data-toggle="modal"> 
+                <i class="fa fa-user-plus">  </i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 icon-btn">
+            <a href="#user-profile-modal" data-toggle="modal"> 
+                <i class="fa fa-cog">  </i>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 icon-btn">
+            <a href="/logout"> 
+                <i class="fa fa-power-off">  </i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-sm-3 sidenav no-padding"   style="display: none;">
     <div class="left">
         <div class="top form-group">
             <select class="form-control" id="select-type-chat">
                 <option data-target="#all-chat" value="all-chat">Toàn bộ trò chuyện</option>
-                <option data-target="#personal-chat" value="personal-chat">Trò chuyện cá nhân</option>
-                <option data-target="#group-chat" value="group-chat">Trò chuyện nhóm</option>
             </select>
-            <a href="#groupChatModal" class="create-group-chat" data-toggle="modal" 
-                title="Tạo một nhóm trò chuyện mới"></a>
         </div>
         <div class="tab-content">
-            <div class="tab-pane active" id="all-chat">
-                <ul class="people no-padding-start">
-                    <a href="#uidcontact._id" class="room-chat">
-                        <li class="person" data-chat="contact._id">
-                            <div class="left-avatar">
-                                <div class="dot"></div>
-                                <img src="images/users/avatar-default.jpg" alt="">
-                            </div>
-                            <span class="name">
-                                Trung Quân
-                            </span>
-                            <span class="time">Một phút trước</span>
-                            <span class="preview">Xin chào</span>
-                        </li>
-                    </a>
-                    <a href="#uidgroupChatItem._id" class="room-chat">
-                        <li class="person group-chat" data-chat="groupChatItem._id">
-                            <div class="left-avatar">
-                                <!-- <div class="dot"></div> -->
-                                <img src="images/users/group-avatar-trungquandev.png" alt="">
-                            </div>
-                            <span class="name">
-                                <span class="group-chat-name">Group:</span> Group Chat
-                            </span>
-                            <span class="time">Hai giờ trước</span>
-                            <span class="preview">Chào cả nhóm</span>
-                        </li>
-                    </a>
-                    <a href="#" class="room-chat" id="null-contact">
-                        <li class="person active" data-chat="person-default">
-                            <div class="left-avatar">
-                                <div class="dot online"></div>
-                                <img class="avatar-online" src="images/users/avatar-default.jpg" alt="">
-                            </div>
-                            <span class="name">Trung Quân (admin)</span>
-                            <span class="time">Bây giờ</span>
-                            <span class="preview">Xin chào <strong>Trung Quân</strong>...</span>
-                        </li>
-                    </a>
-                </ul>
-            </div>
-            <div class="tab-pane " id="personal-chat">
                 <ul class="people no-padding-start">
                     <%userConversations.forEach(function(item){%>
                         <a href="#uid_<%=item._id%>" class="room-chat" data-target="#to_<%=item._id%>">
@@ -71,26 +64,42 @@
                     
                     
                 </ul>
-            </div>
-            <div class="tab-pane " id="group-chat">
-                <ul class="people no-padding-start">
-                    <a href="#uidgroupChatItem._id" class="room-chat">
-                        <li class="person group-chat" data-chat="groupChatItem._id">
-                            <div class="left-avatar">
-                                <!-- <div class="dot"></div> -->
-                                <img src="images/users/group-avatar-trungquandev.png" alt="">
-                            </div>
-                            <span class="name">
-                                <span class="group-chat-name">Group:</span> Group Chat
-                            </span>
-                            <span class="time">Hai giờ trước</span>
-                            <span class="preview">Chào cả nhóm</span>
-                        </li>
-                    </a>
-                    
-                </ul>
-            </div>
+            
         </div>
         
     </div>
+    <div class="notification-tab">
+
+    </div>
+    
+</div>
+<div class="col-sm-3 notification-right" >
+    <div class="theme-title">
+        <div class="media">
+          <div> 
+            <h2>Notification</h2>
+            <h4>List of notification</h4>
+          </div>
+          <div class="media-body text-right">   
+              <a class="icon-btn btn-outline-light btn-sm close-panel" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </a>
+          </div>
+        </div>
+        <div id="noti_Container">
+            <div id="notifications">
+                <a id="popup-mark-notif-as-read">Đánh dấu tất cả đã đọc</a>
+                <div class="noti_content">
+                    <% notifications.forEach(function(notification) { %>
+                        <%- notification %>
+                    <% }) %>
+                </div>
+                <div class="seeAll">
+                    <a href="#notificationsModal" data-toggle="modal">
+                        Xem tất cả
+                    </a>
+                </div>
+            </div>
+        </div>
+      </div>
 </div>

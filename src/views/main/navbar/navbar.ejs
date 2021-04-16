@@ -41,8 +41,8 @@
                        
                     </a>
                 </li>
-                <li>
-                    <a href="#" id="noti_Button" data-toggle="modal" title="Thông báo">
+                <!-- <li>
+                    <a href="#" id="" data-toggle="modal" title="Thông báo">
                         <i class="fa fa-globe"></i>
                             <% if(countNotifUnread > 0 ){%>
                                 <div class="noti_counter" > <%= countNotifUnread%></div>
@@ -50,7 +50,7 @@
                                 <div class="noti_counter display-none"> </div>
                                 <%}%>
                         <div id="noti_Container">
-                            <div id="notifications">
+                            <div id="">
                                 <a id="popup-mark-notif-as-read">Đánh dấu tất cả đã đọc</a>
                                 <div class="noti_content">
                                     <% notifications.forEach(function(notification) { %>
@@ -65,11 +65,11 @@
                             </div>
                         </div>
                     </a>
-                </li>
+                </li> -->
                 <li class="dropdown" id="dropdown-navbar-user" data-uid="user._id">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <img id="navbar-avatar" class="avatar-small" src="images/users/<%= user.avatar %>" alt="">
-                        <span class="navbat-username"> <%=user.username%></span>
+                        <span id="navbat-username"> <%=user.username%></span>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">

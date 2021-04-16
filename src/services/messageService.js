@@ -1,7 +1,9 @@
-import _ from "lodash"
-import ContactModel from "./../models/contactModel"
-import UserModel from "./../models/userModel"
-import MessageModel from "./../models/messangeModel"
+import _ from "lodash";
+import ContactModel from "./../models/contactModel";
+import UserModel from "./../models/userModel";
+import MessageModel from "./../models/messangeModel";
+import fsExtra from "fs-extra"
+
 
 
 const LIMIT_CONVERSATIONS_TAKEN = 15
@@ -73,7 +75,42 @@ let addNewTextEmoji = (sender,receivedId,messageVal) =>{
     })
 }
 
+let addNewImageMessage = (sender,receivedId,messageVal) =>{
+    return new Promise(async (resolve,reject) =>{
+        try {
+            let receiverModel = await UserModel.findUserById(receivedId)
+            let receiver = {
+                id : receiverModel._id,
+                name : receiverModel.username,
+                avatar : receiverModel.avatar
+            }
+
+            let imageBuffer = await fsExtra.readFile(messageVal.path);
+            let imageContentType = messageVal.minetype;
+            let imageName = messageVal.originalname;
+
+            let newMessageItem = {
+                senderId : sender.id,
+                receiverId : receiver.id,
+                conversationType : MessageModel.conversationType.PERSONAL,
+                messageType : MessageModel.messageType.IMAGE,
+                sender : sender,
+                receiver : receiver,
+                file : {data : imageBuffer, contentType : imageContentType, fileName : imageName},
+                createAt : Date.now()
+            }
+            let newMessage = await MessageModel.model.createNew(newMessageItem)
+            await ContactModel.updateWhenHasNewMessage(sender.id,receiver.id)
+            resolve(newMessage)
+        } catch (error) {
+            console.log(error)
+            reject(error)
+        }
+    })
+}
+
 module.exports ={
     getAllConversationItems : getAllConversationItems,
-    addNewTextEmoji : addNewTextEmoji
+    addNewTextEmoji : addNewTextEmoji,
+    addNewImageMessage : addNewImageMessage,
 }

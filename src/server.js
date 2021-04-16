@@ -1,22 +1,26 @@
-import express from "express"
+import express from "express";
 import ConnectDB from "./config/connectDB";
 import configViewEngine from "./config/viewEngine";
-import initRouters from "./routers/web"
-import bodyParser from "body-parser"
-import connectFlash from "connect-flash"
-import session from "./config/session"
-import passport from "passport"
-import http from "http"
-import socketio from "socket.io"
-import initSocket from "./sockets/index"
+import initRouters from "./routers/web";
+import bodyParser from "body-parser";
+import connectFlash from "connect-flash";
+import session from "./config/session";
+import passport from "passport";
+import http from "http";
+import socketio from "socket.io";
+import initSocket from "./sockets/index";
 
-import passportSocketIo from "passport.socketio"
-import cookieParser from "cookie-parser"
+import events from "events";
+import passportSocketIo from "passport.socketio";
+import cookieParser from "cookie-parser";
 import pem from "pem"
 import https from "https"
 
   
 let app=express();
+
+//set max connection event listener
+events.EventEmitter.defaultMaxListeners = 30;
 
 //init server with socket io & express app
 

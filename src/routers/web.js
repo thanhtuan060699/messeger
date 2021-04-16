@@ -28,17 +28,17 @@ let initRouters=(app)=>{
         failureRedirect:"login-register",
     }))
 
-    router.get("/logout",auth.getLogout)
-    router.put("/user/update-avatar",user.updateAvatar)
-    router.put("/user/update-info",user.updateUserInfo)
-    router.get("/contact/find-user/:keyword",contact.findUsersContact)
-    router.post("/contact/add-new",contact.addNewContact)
-    router.delete("/contact/remove-request-contact-sent",contact.removeRequestContactSent)
-    router.get("/notification/read-more",notification.readMore)
-    router.delete("/contact/remove-request-contact-received",contact.removeRequestContactReceived)
-    router.put("/contact/approve-request-contact-received",contact.approveRequestContactReceived)
-
-    router.post("/message/add-new-text-emoji",message.addNewTextEmoji)
+    router.get("/logout",auth.getLogout);
+    router.put("/user/update-avatar",user.updateAvatar);
+    router.put("/user/update-info",user.updateUserInfo);
+    router.get("/contact/find-user/:keyword",contact.findUsersContact);
+    router.post("/contact/add-new",contact.addNewContact);
+    router.delete("/contact/remove-request-contact-sent",contact.removeRequestContactSent);
+    router.get("/notification/read-more",notification.readMore);
+    router.delete("/contact/remove-request-contact-received",contact.removeRequestContactReceived);
+    router.put("/contact/approve-request-contact-received",contact.approveRequestContactReceived);
+    router.post("/message/add-new-text-emoji",message.addNewTextEmoji);
+    router.post("/message/add-new-image", message.addNewImageMessage);
     return app.use("/",router)
 
     

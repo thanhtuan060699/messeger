@@ -1,4 +1,4 @@
-<div class="col-sm-9 sidenav no-padding">
+<div class="col-sm-8 sidenav no-padding">
     <div class ="tab-content" id="screen-chat">
         <%allConversationWithMessages.forEach(function(item,index){%>
             <div class="right tab-pane <%if(index===0){%>active <%}%>" data-chat="<%=item._id%>" id="to_<%=item._id%>">
@@ -21,7 +21,7 @@
                     </span>
                 </div>
                 <div class="content-chat">
-                    <div class="chat" data-chat="<%=item._id%>">
+                    <div class="chat custom-scroll" data-chat="<%=item._id%>">
                         <% item.messages.forEach(function(message){%>
                             <%if(message.messageType==="text"){%>
                                 <div class="bubble <%if(message.senderId == user._id){%>me<%}else{%>you <%}%>" data-mess-id="<%=message._id%>">
@@ -50,18 +50,17 @@
                     <input type="text" class="write-chat" id="write-chat-<%=item._id%>" data-chat="<%=item._id%>">
                     <div class="icons">
                         <a href="#" class="icon-chat" data-chat="<%=item._id%>"><i class="fa fa-smile-o"></i></a>
-                        <label for="image-chat">
-                            <input type="file" id="image-chat" name="my-image-chat" class="image-chat" data-chat="<%=item._id%>">
+                        <label for="image-chat-<%=item._id%>">
+                            <input type="file" id="image-chat-<%=item._id%>" name="my-image-chat" class="image-chat" data-chat="<%=item._id%>">
                             <i class="fa fa-photo"></i>
                         </label>
                         <label for="attach-chat">
                             <input type="file" id="attach-chat" name="my-attach-chat" class="attach-chat" data-chat="<%=item._id%>">
                             <i class="fa fa-paperclip"></i>
                         </label>
-                        <a href="#streamModal" id="video-chat" class="video-chat" data-chat="<%=item._id%>" data-toggle="modal">
+                        <a href="javascript:void(0)" id="video-chat-<%= item._id%>" class="video-chat" data-chat="<%=item._id%>" >
                             <i class="fa fa-video-camera"></i>
                         </a>
-                        <input type="hidden" id="peer-id" value="">
                     </div>
                 </div>
             </div>

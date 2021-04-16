@@ -11,14 +11,14 @@ function nineScrollLeft() {
 }
 
 function nineScrollRight(divId) {
-  $(`.right .chat[data-chat = ${divId}]`).niceScroll({
-    smoothscroll: true,
-    horizrailenabled: false,
-    cursorcolor: '#ECECEC',
-    cursorwidth: '7px',
-    scrollspeed: 50
-  });
-  $(`.right .chat[data-chat = ${divId}]`).scrollTop($(`.right .chat[data-chat = ${divId}]`)[0].scrollHeight);
+  // $(`.right .chat[data-chat = ${divId}]`).niceScroll({
+  //   smoothscroll: true,
+  //   horizrailenabled: false,
+  //   cursorcolor: '#ECECEC',
+  //   cursorwidth: '7px',
+  //   scrollspeed: 50
+  // });
+  // $(`.right .chat[data-chat = ${divId}]`).scrollTop($(`.right .chat[data-chat = ${divId}]`)[0].scrollHeight);
 }
 
 function enableEmojioneArea(divId) {
@@ -147,15 +147,13 @@ function flashMasterNotify(){
 }
 
 function changeTypeChat(){
-  $("#select-type-chat").bind("change",function(){
-    let optionSelected = $("option:selected", this)
-    optionSelected.tab("show")
-    if($(this).val() === "personal-chat"){
-      $(".create-group-chat").hide()
-    }else{
-      $(".create-group-chat").show()
-    }
-  })
+  // var selected = $('#select-type-chat').find(":selected");
+  // selected.tab("show")
+  // $("#select-type-chat").bind("change",function(){
+  //   console.log('vo day')
+  //   let optionSelected = $("option:selected", this)
+  //   optionSelected.tab("show")
+  // })
 }
 function changeScreenChat(){
   $(".room-chat").bind("click",function(){
@@ -165,8 +163,14 @@ function changeScreenChat(){
     //Cau hinh thanh cuon ben box chat rightSide.js
     let divId = $(this).find("li").data("chat")
     nineScrollRight(divId)
-    console.log(divId)
+   
+    imageChat(divId)
+
     enableEmojioneArea(divId)
+
+    videoChat(divId)
+
+    
   })
 }
 
@@ -207,4 +211,8 @@ $(document).ready(function() {
   changeScreenChat()
 
   $("ul.people").find("li")[0].click()
+
+  $("video-chat-group").bind("click",function(){
+    alertify.notify("Không khả dụng với nhóm trò chuyện, vui lòng thử lại với trò chuyện cá nhân","error",7)
+  })
 });

@@ -11,7 +11,6 @@ function textAndEmojiChat(divId){
                 targetId : targetId,
                 messageVal : messageVal
             }
-            console.log(dataTextEmojiForSend)
             $.post("/message/add-new-text-emoji",dataTextEmojiForSend,function(result){
                 let dataToEmit = {
                     message : result.message
@@ -40,5 +39,5 @@ socket.on("chat-text-emoji-response",function (result) {
     nineScrollRight(result.senderId)
     $(`#write-chat-${result.senderId}`).val("")
     currentEmojioneArea.find(".emojionearea-editor").text("")
-    console.log(result)
+    
 })

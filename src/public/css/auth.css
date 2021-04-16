@@ -19,9 +19,9 @@ body {
   text-rendering: optimizeLegibility;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  background-image: url("../images/background/image.jpg");
   background-size: cover;
   background-repeat: none;
+  background: #d0eafb;
   color: #fff;
 }
 
@@ -30,7 +30,102 @@ body {
 }
 
 .my-content {
-  margin-top: 80px;
+  margin-top: 140px;
+  background: white;
+  border: 1px solid white;
+  border-radius: 34px;
+}
+
+.person-1 {
+  position: relative;
+  left: 950px;
+  z-index: 10;
+  top: 62px;
+}
+
+.person-2 {
+  position: relative;
+  top: -183px;
+  left: 185px;
+  z-index: 10;
+}
+.person-2 img {
+  width: 129px;
+}
+
+.top-circle {
+  width: calc(90px + (280 - 90) * ((100vw - 320px) / (1920 - 320)));
+  height: calc(90px + (280 - 90) * ((100vw - 320px) / (1920 - 320)));
+  top: 11%;
+  left: 12%;
+  background-image: linear-gradient(#f1f8fe, #f1f8fe, #cde7fa);
+  border-radius: 50%;
+  position: relative;
+  top: -446px;
+  left: 47px;
+}
+
+@keyframes heartbeat {
+  0%   {}
+  25%  {transform: translate(340px, 50px);;}
+  50%  {transform: translate(680px, 0px);;}
+  100% {transform: translate(0px, 0px);}
+}
+
+.heart {
+  position: relative;
+  z-index: 100;
+  top: -1136px;
+  right: -267px;
+  animation-name: heartbeat;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+
+
+.right-circle {
+  width: 70px;
+  height: 70px;
+  top: 11%;
+  left: 12%;
+  background-image: linear-gradient(#f1f8fe, #f1f8fe, #7bbcec);
+  border-radius: 50%;
+  position: relative;
+  top: -446px;
+  left: 1100px;
+}
+
+.bottom-circle {
+  width: 250px;
+  height: 250px;
+  top: 11%;
+  left: 12%;
+  background-image: linear-gradient(#f1f8fe, #f1f8fe, #7bbcec);
+  border-radius: 50%;
+  position: relative;
+  top: -554px;
+  left: 100px;
+}
+
+.left-circle {
+  width: 140px;
+  height: 140px;
+  top: 11%;
+  left: 12%;
+  background-image: linear-gradient(#f1f8fe, #f1f8fe, #7bbcec);
+  border-radius: 50%;
+  position: relative;
+  top: -299px;
+  left: 1052px;
+}
+
+.sign-logo {
+  text-align: center;
+}
+.sign-logo img {
+  width: 45px;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -49,6 +144,12 @@ hr {
 
 .login-title {
   font-size: 52px;
+  font-weight: bolder;
+  color: #7bbcec;
+}
+
+.login-image {
+  position: absolute;
 }
 
 .table a {

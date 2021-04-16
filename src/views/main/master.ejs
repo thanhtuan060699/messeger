@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Awesome Chat</title>
+    <title>MSChat</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -20,9 +20,9 @@
     
     <%- include("alert/alert")%>
 
-    <%- include('navbar/navbar.ejs'); %>
+
     
-    
+    <input type="hidden" id="ice-server-list" value="<%= iceServerList%>"
     <!-- content -->
     <div class="container-fluid main-content">
         <div class="row content">
@@ -63,6 +63,8 @@
     <script src="js/approveRequestContactReceived.js"></script>
 
     <script src="js/textAndEmojiChat.js"></script>
+    <script src="js/imageChat.js"></script>
+    <script src="js/videoChat.js"></script>
 
     <%- include('contacts/contactModal'); %>
      
