@@ -43,12 +43,9 @@ $(document).ready(function(){
 
     peer.on("open",function(peerId){
         getPeerId = peerId
-        console.log('peer')
-        console.log(getPeerId)
     })
     //listener
     socket.on("server-request-peer-id-of-listener",function(response){
-        console.log('vao trong')
         let listenerName = $("#navbat-username").text();
         let dataToEmit = {
             callerId : response.callerId,
@@ -201,7 +198,6 @@ $(document).ready(function(){
 
             //call to listener
             let call = peer.call(response.listenerPeerId , stream);
-            console.log('vo on stream')
             call.on('stream', function(remoteStream) {
                 playVideoStream("remote-stream", remoteStream)
             });
@@ -225,15 +221,11 @@ $(document).ready(function(){
 
     //accep listener
     socket.on("server-send-accept-call-to-listener",function(response){
-        console.log('vo day listener')
         Swal.close();
         clearInterval(timerInterval);
-        console.log(peer)
         var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia).bind(navigator);
         peer.on('call', function(call) {
-            console.log('vo day')
             getUserMedia({video: true, audio: true}, function(stream) {
-              console.log('vo bowrf')
               // Show modal streaming
               $("#streamModal").modal("show");
               // Play my stream in local (of listener)

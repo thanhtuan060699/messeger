@@ -36,7 +36,6 @@ const { request } = require("express")
         });
 
         socket.on("listener-emit-peer-id-to-server",(data)=>{
-            console.log('log day 2' , data)
             let response = {
                 callerId : data.callerId,
                 listenId : data.listenId,
@@ -53,7 +52,6 @@ const { request } = require("express")
         //get request call from caller
 
         socket.on("caller-request-call-to-server", (data)=>{
-            console.log('log o day', data)
             let response = {
                 callerId : data.callerId,
                 listenId : data.listenId,
@@ -94,8 +92,6 @@ const { request } = require("express")
         }));
 
         socket.on("listener-accept-request-call-to-server", (data=>{
-            console.log('thhhhh')
-            console.log(data)
             let response = {
                 callerId : data.callerId,
                 listenId : data.listenId,

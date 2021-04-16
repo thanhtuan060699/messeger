@@ -117,9 +117,6 @@ ContactSchema.statics={
         }).exec()
     },
     approveRequestContactReceived(userId,contactId){
-        console.log('log ra')
-        console.log(userId)
-        console.log(contactId)
         return this.update({
             $and : [
                 {"userId" : contactId},

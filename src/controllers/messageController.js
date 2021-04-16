@@ -43,7 +43,6 @@ let imageMessageUploadFile = multer({
 
 
 let addNewImageMessage = (req,res) =>{
-    console.log('vo day')
     imageMessageUploadFile(req, res, async (error)=>{
         console.log(error)
         if(error){
@@ -57,9 +56,6 @@ let addNewImageMessage = (req,res) =>{
             };
             let receivedId = req.body.targetId;
             let messageVal = req.file;
-            console.log('vooo daay');
-            console.log(receivedId)
-            console.log(messageVal)
     
             let newMessage = await message.addNewImageMessage(sender,receivedId,messageVal)
 
