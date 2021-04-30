@@ -7,7 +7,6 @@ function videoChat(divId){
             listenId : targetId,
             callerName : callerName
         }
-        console.log(dataToEmit)
         socket.emit('caller-check-listener-onl-or-not',dataToEmit);
     })
 
@@ -61,7 +60,6 @@ $(document).ready(function(){
     let timerInterval;
     // caller get peerId of caller
     socket.on("server-send-peer-of-listener-to-caller",function(response){
-        console.log('day', response)
         let dataToEmit = {
             callerId : response.callerId,
             listenId : response.listenId,

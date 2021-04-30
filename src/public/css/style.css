@@ -22,7 +22,7 @@ body {
   text-rendering: optimizeLegibility;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 400;
-  background-image: url("../images/background/image.jpg");
+  background: white;
   background-size: cover;
   background-repeat: none;
 }
@@ -262,7 +262,6 @@ label:focus,
   font-size: 13px;
   padding: 8px;
   margin: 0;
-  border-bottom: solid 1px rgba(100, 100, 100, .30);
 }
 
 #notifications:before {
@@ -314,9 +313,20 @@ label:focus,
 
 .noti_content > div {
   max-width: 95%;
-  margin : 5px 0px 0px 7px;
+  margin: 5px 0px 0px 7px;
   color: #333;
   padding: 5px;
+  cursor: pointer;
+  margin-left: -3px;
+}
+
+.theme-title {
+  margin-top: 29px;
+  margin-left: 5px;
+}
+
+.media h4 {
+  color: rgb(99 87 87);
 }
 
 .noti_content > div:hover{
@@ -454,6 +464,56 @@ label:focus,
   width: 24px;
   height: 24px;
   border-radius: 16px 16px 0 16px;
+}
+
+.avatar-small-custom {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px 16px 16px 16px;
+  margin-top: 10px;
+}
+
+strong.user-name-notification {
+  font-weight: bolder;
+  font-size: 14px;
+  padding-left: 9px;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-radius: 3px;
+  position: absolute;
+  top: 27px;
+  z-index: 2;
+  left: 255px;
+}
+
+@keyframes notifcation-move {
+  0%   {
+    left: -110px ;
+    display: none;
+    opacity: 0;
+  }
+  100%  {transform: translate(20px, 0px);
+  display: block;
+  opacity: 1;}
+}
+
+.notifcation-active{
+  display: block !important;
+  animation-name: notifcation-move;
+  animation-duration: 1s;
+}
+
+.talk-list-active{
+  display: none;
+}
+
+.notification-content {
+  padding-left: 53px;
+  margin-top: -20px;
 }
 
 .active {
@@ -867,7 +927,7 @@ label:focus,
 }
 
 .show-image-chat {
-  max-width: 50%;
+  max-width: 70%;
 }
 
 #loader {
@@ -915,11 +975,11 @@ label:focus,
 }
 
 .bubble-image-file {
-  background-color: #FFF !important;
+  background-color: #eff7fe !important;
 }
 
 .bubble-image-file:before {
-  background-color: #FFF !important;
+  background-color:  #eff7fe !important;
 }
 
 .bubble-typing-gif {
@@ -1296,7 +1356,7 @@ label:focus,
 }
 
 .notif-readed-failed{
-  background: #E3E8F0;
+  background: white;
 }
 .display-none{
   display: none
@@ -1373,7 +1433,7 @@ label:focus,
 
 .col-sm-1.control-bar {
   height: 100%;
-  background: white;
+  background: #eff7fe;
 }
 
 .logo-home {
@@ -1402,7 +1462,9 @@ label:focus,
 .col-sm-3.notification-right {
   background: white;
   height: 100%;
-  border-left: 1px solid black;
+  position: absolute;
+  left: 110px;
+  display: none;
 }
 
 h2 {
@@ -1411,4 +1473,9 @@ h2 {
   font-weight: 800;
   color: #223645;
   margin: 0;
+}
+
+#screen-chat-main {
+  position: absolute;
+  left: 438px;
 }

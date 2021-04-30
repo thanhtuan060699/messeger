@@ -37,7 +37,7 @@
         </div>
     </div>
 </div>
-<div class="col-sm-3 sidenav no-padding"   style="display: none;">
+<div class="col-sm-3 sidenav no-padding " id="talk-list" >
     <div class="left">
         <div class="top form-group">
             <select class="form-control" id="select-type-chat">
@@ -86,19 +86,17 @@
               </a>
           </div>
         </div>
-        <div id="noti_Container">
-            <div id="notifications">
-                <a id="popup-mark-notif-as-read">Đánh dấu tất cả đã đọc</a>
-                <div class="noti_content">
-                    <% notifications.forEach(function(notification) { %>
-                        <%- notification %>
-                    <% }) %>
-                </div>
-                <div class="seeAll">
-                    <a href="#notificationsModal" data-toggle="modal">
-                        Xem tất cả
-                    </a>
-                </div>
+        <div id="noti_Containers">
+            <a id="popup-mark-notif-as-read"></a>
+            <div class="noti_content">
+                <% notifications.forEach(function(notification) { %>
+                    <%- notification %>
+                <% }) %>
+            </div>
+            <div class="seeAll">
+                <a href="#notificationsModal" data-toggle="modal">
+                    Xem tất cả
+                </a>
             </div>
         </div>
       </div>

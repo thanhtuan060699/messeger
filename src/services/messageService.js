@@ -49,7 +49,6 @@ let addNewTextEmoji = (sender,receivedId,messageVal) =>{
     return new Promise(async (resolve,reject) =>{
         try {
             let receiverModel = await UserModel.findUserById(receivedId)
-            console.log(receiverModel)
             let receiver = {
                 id : receiverModel._id,
                 name : receiverModel.username,

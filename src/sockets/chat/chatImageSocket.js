@@ -2,7 +2,8 @@
  * 
  * @param io from socket.io lib
  */
-let addNewContact = (io) =>{
+ let chatImage = (io) =>{
+     console.log('voooooo')
     let clients={}
     io.on("connection",(socket)=>{
 
@@ -14,18 +15,14 @@ let addNewContact = (io) =>{
         else{
             clients[currenUserId]=[socket.id]
         }
-
-        socket.on("add-new-contact",(data)=>{
-            let currentUSer={
-                id : socket.request.user._id,
-                username : socket.request.user.username,
-                avatar : socket.request.user.avatar,
-                address : (socket.request.user.address !== null)?socket.request.user.address : ""
-            }
+     
+        socket.on("chat-image",(data)=>{
+            console.log('log data')
+            console.log(data)
             //emit notification
-            if(clients[data.contactId]){
-                clients[data.contactId].forEach(socketId=>{
-                    io.sockets.connected[socketId].emit("response-add-new-contact",currentUSer)
+            if(clients[data.message.receiverId]){
+                clients[data.message.receiverId].forEach(socketId=>{
+                    io.sockets.connected[socketId].emit("chat-image-response",data.message)
                 })
             }
            
@@ -42,4 +39,4 @@ let addNewContact = (io) =>{
     })
 }
 
-module.exports =addNewContact
+module.exports = chatImage

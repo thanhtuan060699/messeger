@@ -55,7 +55,6 @@ let getHome= async (req,res)=>{
     let getAllConversationItems = await message.getAllConversationItems(req.user._id);
 
     let userConversations = getAllConversationItems.userConversations;
-    console.log(userConversations)
     let allConversationWithMessages = getAllConversationItems.allConversationWithMessages;
     let iceServerList = await getICETurnServer();
 

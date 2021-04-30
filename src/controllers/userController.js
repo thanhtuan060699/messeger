@@ -2,7 +2,7 @@ import multer from "multer"
 import {transErrors,transSuccess} from "./../../lang/vi"
 import uuidv4 from "uuid/v4"
 import {user} from "./../services/index"
-import fxExtra from "fs-extra"
+
 
 let storageAvatar= multer.diskStorage({
     destination:(req,file,callback) =>{
@@ -15,7 +15,6 @@ let storageAvatar= multer.diskStorage({
         }
 
         let avatarName =`${Date.now()}-${uuidv4()}-${file.originalname}`
-        console.log(avatarName)
         callback(null,avatarName)
     }
 })

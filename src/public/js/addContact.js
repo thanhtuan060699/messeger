@@ -19,7 +19,8 @@ function addContact (){
 socket.on("response-add-new-contact",function (user) {
     let notif=`<div class="notif-readed-failed" data-uid="${user.id}">
         <img class="avatar-small" src="images/users/${user.avatar}" alt=""> 
-        <strong>${user.username}</strong> đã gửi lời kết bạn cho bạn!
+        <strong class="user-name-notification">${user.username}</strong>
+        <div class="notification-content">Đã gửi lời kết bạn cho bạn!</div>
         </div>`
     $(".noti_content").prepend(notif)
     $("ul.list-notifications").prepend(`<li>${notif}</li>`)

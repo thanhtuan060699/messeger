@@ -99,7 +99,7 @@ const { request } = require("express")
                 listenerName : data.listenerName,
                 listenerPeerId : data.listenerPeerId
             }
-            console.log(response)
+
             clients[data.callerId].forEach(socketId=>{
                 io.sockets.connected[socketId].emit("server-send-accept-call-to-caller",response)
             })

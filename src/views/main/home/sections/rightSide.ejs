@@ -1,4 +1,4 @@
-<div class="col-sm-8 sidenav no-padding">
+<div class="col-sm-8 sidenav no-padding" id="screen-chat-main">
     <div class ="tab-content" id="screen-chat">
         <%allConversationWithMessages.forEach(function(item,index){%>
             <div class="right tab-pane <%if(index===0){%>active <%}%>" data-chat="<%=item._id%>" id="to_<%=item._id%>">

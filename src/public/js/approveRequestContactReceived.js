@@ -6,7 +6,6 @@ function approveRequestContactReceived(){
             url: "/contact/approve-request-contact-received",
             data: {uid : targetId},
             success: function (response) {
-                console.log(response.userContactModel)
                 //remove request contact received
                 $("#request-contact-received").find(`li[data-uid =${response.userContactModel.id}]`).remove()
 

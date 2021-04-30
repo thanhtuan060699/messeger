@@ -49,13 +49,15 @@ const NOTIFICATION_CONTENTS ={
         if(notificationType === NOTIFICATION_TYPES.ADD_CONTACT){
             if(!isRead){
                 return `<div class="notif-readed-failed" data-uid="${userId}">
-                    <img class="avatar-small" src="images/users/${userAvatar}" alt=""> 
-                    <strong>${username}</strong> đã gửi lời kết bạn cho bạn!
+                    <img class="avatar-small-custom" src="images/users/${userAvatar}" alt=""> 
+                    <strong class="user-name-notification">${username}</strong>
+                    <div class="notification-content">Đã gửi lời kết bạn cho bạn!</div>
                     </div>`
             }
             return `<div data-uid="${userId}">
-                    <img class="avatar-small" src="images/users/${userAvatar}" alt=""> 
-                    <strong>${username}</strong> đã gửi lời kết bạn cho bạn!
+                    <img class="avatar-small-custom" src="images/users/${userAvatar}" alt=""> 
+                    <strong class="user-name-notification">${username}</strong> 
+                    <div class="notification-content">Đã gửi lời kết bạn cho bạn!</div>
                     </div>`
             
         }

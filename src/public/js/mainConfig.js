@@ -74,12 +74,10 @@ function showModalContacts() {
 
 function configNotification() {
   $('#noti_Button').click(function() {
-    $('#notifications').fadeToggle('fast', 'linear');
-    $('.noti_counter').fadeOut('slow');
-    return false;
-  });
-  $(".main-content").click(function() {
-    $('#notifications').fadeOut('fast', 'linear');
+    var talkList = document.getElementById('talk-list')
+    talkList.classList.toggle('talk-list-active')
+    var notifcations = document.getElementsByClassName('notification-right');
+    notifcations[0].classList.toggle('notifcation-active')
   });
 }
 

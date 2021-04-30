@@ -22,7 +22,6 @@ let initPassportFacebook =()=>{
             if(user){
                 return done(null,user,req.flash("success",transSuccess.loginSuccess(user.username)))
             }
-            console.log(profile)
             let newUserItem={
                 username : profile.displayName,
                 gender : profile.gender,

@@ -22,7 +22,7 @@ let addNewTextEmoji =  async(req,res) =>{
 
 let storageImageChat = multer.diskStorage({
     destination:(req,file,callback) =>{
-        callback(null, "src/public/image/chat/message")
+        callback(null, "src/public/images/chat/message")
     },
     filename :(req,file,callback) =>{
         let math=["image/png","image/jpg","image/jpeg"]
@@ -31,7 +31,6 @@ let storageImageChat = multer.diskStorage({
         }
 
         let imageName =`${Date.now()}-${file.originalname}`
-        console.log(file.originalname)
         callback(null,imageName)
     }
 })
@@ -44,19 +43,18 @@ let imageMessageUploadFile = multer({
 
 let addNewImageMessage = (req,res) =>{
     imageMessageUploadFile(req, res, async (error)=>{
-        console.log(error)
         if(error){
             return res.status(500).send(transErrors.avatar_size)
         }
+
         try {
             let sender = {
                 id: req.user._id,
                 name : req.user.username,
                 avatar : req.user.avatar
             };
-            let receivedId = req.body.targetId;
+            let receivedId = req.body.uid;
             let messageVal = req.file;
-    
             let newMessage = await message.addNewImageMessage(sender,receivedId,messageVal)
 
             //Remove image, because this image is saved in mongodb

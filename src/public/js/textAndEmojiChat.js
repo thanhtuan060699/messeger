@@ -23,8 +23,6 @@ function textAndEmojiChat(divId){
                 nineScrollRight(divId)
                 $(`#write-chat-${divId}`).val("")
                 currentEmojioneArea.find(".emojionearea-editor").text("")
-                console.log("datatoEmit")
-                console.log(dataToEmit)
                 //real time
                 socket.emit("chat-text-emoji", dataToEmit)
             })
