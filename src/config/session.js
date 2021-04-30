@@ -9,7 +9,7 @@ let DB_NAME="message";
 let DB_USERNAME="";
 let DB_PASSWORD="";
 let sessionStore=new MongoStore({
-    url: "mongodb+srv://root:aPPPHXkPTWetoE6k@cluster0.y9j7a.mongodb.net/message?retryWrites=true&w=majority",
+    url: "mongodb+srv://root:aPPPHXkPTWetoE6k@cluster0.y9j7a.mongodb.net/message",
     autoConnect:true,
     // autoRemove:"native"
 })
