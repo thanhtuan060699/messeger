@@ -2,10 +2,10 @@ import session from "express-session"
 import connectMongo from "connect-mongo"
 
 let MongoStore=connectMongo(session)
-let DB_CONNECTION="mongodb";
-let DB_HOST="localhost";
-let DB_PORT="27017";
-let DB_NAME="awesome_chat";
+let DB_CONNECTION="mongodb+srv";
+let DB_HOST="root";
+let DB_PORT="root@12345!@cluster0.y9j7a.mongodb.net";
+let DB_NAME="message";
 let DB_USERNAME="";
 let DB_PASSWORD="";
 let sessionStore=new MongoStore({
