@@ -9,9 +9,9 @@ let connectDB=()=>{
     let DB_USERNAME="";
     let DB_PASSWORD="";
 
-    //const uri = "mongodb+srv://root:<password>@cluster0.y9j7a.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    const URI = "mongodb+srv://root:root@12345!@cluster0.y9j7a.mongodb.net/message?retryWrites=true&w=majority";
 
-    let URI=`${DB_CONNECTION}://${DB_HOST}:${DB_PORT}/${DB_NAME}?retryWrites=true&w=majority`;
+    //let URI=`${DB_CONNECTION}://${DB_HOST}:${DB_PORT}/${DB_NAME}?retryWrites=true&w=majority`;
 
     return mongoose.connect(URI,{useNewUrlParser: true });
 
