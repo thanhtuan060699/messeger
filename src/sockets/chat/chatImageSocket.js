@@ -3,7 +3,6 @@
  * @param io from socket.io lib
  */
  let chatImage = (io) =>{
-     console.log('voooooo')
     let clients={}
     io.on("connection",(socket)=>{
 
@@ -17,8 +16,6 @@
         }
      
         socket.on("chat-image",(data)=>{
-            console.log('log data')
-            console.log(data)
             //emit notification
             if(clients[data.message.receiverId]){
                 clients[data.message.receiverId].forEach(socketId=>{

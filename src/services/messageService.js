@@ -108,8 +108,43 @@ let addNewImageMessage = (sender,receivedId,messageVal) =>{
     })
 }
 
+let addNewAttachmentChat = (sender,receivedId,messageVal) =>{
+    return new Promise(async (resolve,reject) =>{
+        try {
+            let receiverModel = await UserModel.findUserById(receivedId)
+            let receiver = {
+                id : receiverModel._id,
+                name : receiverModel.username,
+                avatar : receiverModel.avatar
+            }
+
+            let attachmentBuffer = await fsExtra.readFile(messageVal.path);
+            let attachmentContentType = messageVal.minetype;
+            let attachmentName = messageVal.originalname;
+
+            let newMessageItem = {
+                senderId : sender.id,
+                receiverId : receiver.id,
+                conversationType : MessageModel.conversationType.PERSONAL,
+                messageType : MessageModel.messageType.FILE,
+                sender : sender,
+                receiver : receiver,
+                file : {data : attachmentBuffer, contentType : attachmentContentType, fileName : attachmentName},
+                createAt : Date.now()
+            }
+            let newMessage = await MessageModel.model.createNew(newMessageItem)
+            await ContactModel.updateWhenHasNewMessage(sender.id,receiver.id)
+            resolve(newMessage)
+        } catch (error) {
+            console.log(error)
+            reject(error)
+        }
+    })
+}
+
 module.exports ={
     getAllConversationItems : getAllConversationItems,
     addNewTextEmoji : addNewTextEmoji,
     addNewImageMessage : addNewImageMessage,
+    addNewAttachmentChat : addNewAttachmentChat
 }

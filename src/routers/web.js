@@ -39,6 +39,7 @@ let initRouters=(app)=>{
     router.put("/contact/approve-request-contact-received",contact.approveRequestContactReceived);
     router.post("/message/add-new-text-emoji",message.addNewTextEmoji);
     router.post("/message/add-new-image", message.addNewImageMessage);
+    router.post("/message/add-new-attachment", message.addNewAttachmentChat);
     return app.use("/",router)
 
     

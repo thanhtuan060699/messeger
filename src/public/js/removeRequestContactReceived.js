@@ -22,7 +22,6 @@ function removeRequestContactReceived(){
                 }
             },
             error :function (response) {
-                console.log("loi")
             }
         });
     })

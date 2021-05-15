@@ -4,7 +4,8 @@ import removeRequestContactReceived from "./contact/removeRequestContactReceived
 import approveRequestContactReceived from "./contact/approveRequestContactReceivedSocket";
 import chatTextEmojiSocket from "./chat/chatTextEmojiSocket";
 import chatVideo from "./chat/chatVideoSocket";
-import chatImage from "./chat/chatImageSocket"
+import chatImage from "./chat/chatImageSocket";
+import chatAttachment from "./chat/chatAttachmentSocket";
 
 let initSocket=(io)=>{
     addNewContact(io);
@@ -14,5 +15,6 @@ let initSocket=(io)=>{
     chatTextEmojiSocket(io);
     chatVideo(io);
     chatImage(io);
+    chatAttachment(io);
 }
 module.exports =initSocket

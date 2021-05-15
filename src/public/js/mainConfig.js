@@ -11,14 +11,14 @@ function nineScrollLeft() {
 }
 
 function nineScrollRight(divId) {
-  // $(`.right .chat[data-chat = ${divId}]`).niceScroll({
-  //   smoothscroll: true,
-  //   horizrailenabled: false,
-  //   cursorcolor: '#ECECEC',
-  //   cursorwidth: '7px',
-  //   scrollspeed: 50
-  // });
-  // $(`.right .chat[data-chat = ${divId}]`).scrollTop($(`.right .chat[data-chat = ${divId}]`)[0].scrollHeight);
+  $(`.right .chat[data-chat = ${divId}]`).niceScroll({
+    smoothscroll: true,
+    horizrailenabled: false,
+    cursorcolor: '#9dc1d6',
+    cursorwidth: '9px',
+    scrollspeed: 50
+  });
+  $(`.right .chat[data-chat = ${divId}]`).scrollTop($(`.right .chat[data-chat = ${divId}]`)[0].scrollHeight);
 }
 
 function enableEmojioneArea(divId) {
@@ -168,8 +168,13 @@ function changeScreenChat(){
 
     videoChat(divId)
 
+    attachmentChat(divId)
+
     
   })
+}
+function bufferToBase64(buffer){
+  return btoa(new Uint8Array(buffer).reduce((data, byte)=> data + String.fromCharCode(byte), ""))
 }
 
 $(document).ready(function() {
