@@ -48,6 +48,21 @@ MessageSchema.statics ={
     },
     createNew(item){
         return this.create(item)
+    },
+    deleteAllMessagesWhenDeleteContact(userId, contactId){
+        return this.deleteMany({
+            $or : [
+                {$and : [
+                    {"senderId": userId},
+                    {"receiverId" : contactId}
+                ]},
+                {$and : [
+                    {"senderId": contactId},
+                    {"receiverId" : userId}
+                ]}
+                
+            ]
+        })
     }
 
 }

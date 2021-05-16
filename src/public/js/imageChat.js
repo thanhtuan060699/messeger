@@ -48,8 +48,6 @@ function imageChat(divId){
 }
 socket.on("chat-image-response",function(response){
     let result = response;
-    console.log('log hinh anh')
-    console.log(result)
     let messageOfYou = $(`<div class="bubble you bubble-image-file" data-mess-id="${response._id}"></div>`);
     let imageChat = `
     <img src="/images/users/${response.receiver.avatar}" class="avatar-small"/>

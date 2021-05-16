@@ -16,9 +16,9 @@ function textAndEmojiChat(divId){
                     message : result.message
                 }
                 
-                let senderAvatar=`<img src="/images/users/${result.message.sender.avatar}" class="avatar-small">`;
+                let senderAvatar=`<img src="/images/users/${result.message.sender.avatar}" class="avatar-small">${result.message.text}`;
                 let messageOfMe = $(`<div class="bubble me" data-mess-id="${result.message.senderId}"> ${senderAvatar} </div>`)
-                messageOfMe.text(result.message.text)                        
+                messageOfMe.html(senderAvatar)                        
                 $(`.right`).find(`.chat[data-chat=${divId}]`).append(messageOfMe)
                 nineScrollRight(divId)
                 $(`#write-chat-${divId}`).val("")
@@ -30,9 +30,9 @@ function textAndEmojiChat(divId){
     })
 }
 socket.on("chat-text-emoji-response",function (result) {
-    let senderAvatar=`<img src="/images/users/${result.sender.avatar}" class="avatar-small">`;
-    let messageOfFriend = $(`<div class="bubble you" data-mess-id="${result.senderId}"> ${senderAvatar} </div>`)
-    messageOfFriend.text(result.text)                        
+    let senderAvatar=`<img src="/images/users/${result.sender.avatar}" class="avatar-small">${result.text}`;
+    let messageOfFriend = $(`<div class="bubble you" data-mess-id="${result.senderId}"> ${senderAvatar} </div>`);
+    messageOfFriend.html(senderAvatar);                        
     $(`.right`).find(`.chat[data-chat=${result.senderId}]`).append(messageOfFriend)
     nineScrollRight(result.senderId)
     $(`#write-chat-${result.senderId}`).val("")

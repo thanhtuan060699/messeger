@@ -18,6 +18,8 @@ function nineScrollRight(divId) {
     cursorwidth: '9px',
     scrollspeed: 50
   });
+  console.log('log ra top')
+  console.log($(`.right .chat[data-chat = ${divId}]`)[0].scrollHeight)
   $(`.right .chat[data-chat = ${divId}]`).scrollTop($(`.right .chat[data-chat = ${divId}]`)[0].scrollHeight);
 }
 

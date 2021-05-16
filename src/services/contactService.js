@@ -1,4 +1,5 @@
 import ContactModel from "./../models/contactModel"
+import MessageModel from "./../models/messangeModel";
 import UserModel from "./../models/userModel"
 import NotificationModel from "./../models/notificationModel"
 import _ from "lodash"
@@ -175,6 +176,20 @@ let approveRequestContactReceived = (userId, contactId) =>{
     })
 }
 
+let removeContact = function(currentUserId, contactId){
+    return new Promise(async (resolve,reject)=>{
+        try {
+            let removeContact =await ContactModel.removeContact(currentUserId, contactId)
+            await MessageModel.model.deleteAllMessagesWhenDeleteContact(currentUserId, contactId)
+            resolve(true)
+        } catch (error) {
+            console.log(error)
+            reject(error)
+        }
+        
+    })
+}
+
 module.exports ={
     findUsersContact : findUsersContact,
     addNew : addNew,
@@ -186,5 +201,6 @@ module.exports ={
     countAllContactsSent : countAllContactsSent,
     countAllContactsReceived : countAllContactsReceived,
     removeRequestContactReceived : removeRequestContactReceived,
-    approveRequestContactReceived : approveRequestContactReceived
+    approveRequestContactReceived : approveRequestContactReceived,
+    removeContact : removeContact
 }

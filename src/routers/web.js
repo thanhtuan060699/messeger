@@ -28,6 +28,7 @@ let initRouters=(app)=>{
         failureRedirect:"login-register",
     }))
 
+    router.delete("/contact/remove-contact",contact.removeContact);
     router.get("/logout",auth.getLogout);
     router.put("/user/update-avatar",user.updateAvatar);
     router.put("/user/update-info",user.updateUserInfo);
