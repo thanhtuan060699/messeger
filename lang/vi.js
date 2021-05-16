@@ -11,7 +11,8 @@ export const transErrors={
     account_not_active:"Tài khoản này chưa được active",
     login_failed:"Sai tài khoản hoặc mật khẩu ",
     avatar_type:"Kiểu file không hợp lệ ",
-    avatar_size:"Size file vượt quá 1 MB"
+    avatar_size:"Size file vượt quá 1 MB",
+    current_password_failed : "Mật khẩu hiện tại không đúng !!! Vui lòng nhập lại"
 }
 export const transSuccess={
     userCreated:(userEmail)=>{
@@ -23,7 +24,8 @@ export const transSuccess={
     },
     logout_success : "Đăng xuất tài khoản thành công !!!",
     avatar_updated : "Cập nhật ảnh đại diện thành công ",
-    userInfo_updated : "Cập nhật thông tin người dùng thành công"
+    userInfo_updated : "Cập nhật thông tin người dùng thành công",
+    user_change_password : "Cập nhật mật khẩu thành công"
 }
 
 export const transMail={

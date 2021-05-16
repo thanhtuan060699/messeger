@@ -56,7 +56,9 @@ UserSchema.statics={
     updateUser(id,item){
         return this.findByIdAndUpdate(id,item).exec()
     },
-
+    updatePassword(id, hasdedPassword){
+        return this.findByIdAndUpdate(id, {"local.password" : hasdedPassword}).exec();
+    },
     findAllForAddContact(deprecatedUserIds, keyword){
         return this.find({
             $and : [
@@ -68,7 +70,7 @@ UserSchema.statics={
                 ]}
             ]
         },{_id : 1,username :1,address :1,avatar :1}).exec()
-    }
+    },
 
 };
 

@@ -6,6 +6,8 @@ import chatTextEmojiSocket from "./chat/chatTextEmojiSocket";
 import chatVideo from "./chat/chatVideoSocket";
 import chatImage from "./chat/chatImageSocket";
 import chatAttachment from "./chat/chatAttachmentSocket";
+import typingOn from "./chat/typingOnSocket";
+import userOnlineOffline from "./status/userOnlineOffline"
 
 let initSocket=(io)=>{
     addNewContact(io);
@@ -16,5 +18,7 @@ let initSocket=(io)=>{
     chatVideo(io);
     chatImage(io);
     chatAttachment(io);
+    typingOn(io);
+    userOnlineOffline(io);
 }
 module.exports =initSocket

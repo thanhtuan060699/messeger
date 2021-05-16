@@ -1,7 +1,8 @@
-let userAvatar=null
-let userInfo={}
-let originAvatarSrc = null
-let originUserInfo={}
+let userAvatar=null;
+let userInfo={};
+let originAvatarSrc = null;
+let originUserInfo={};
+let userUpdatePassword = {};
 
 function updateUserInfo(){
     $("#input-change-avatar").bind("change",function(){
@@ -60,6 +61,15 @@ function updateUserInfo(){
     $("#input-change-phone").bind("change",function(){
         userInfo.phone=$(this).val()
     })
+    $("#input-change-current-password").bind("change",function(){
+        userUpdatePassword.currentPassword=$(this).val()
+    })
+    $("#input-change-new-password").bind("change",function(){
+        userUpdatePassword.password=$(this).val()
+    })
+    $("#input-change-confirm-new-password").bind("change",function(){
+        userUpdatePassword.confirmPassword=$(this).val()
+    })
 }
 
 function callUpdateAvatar(){
@@ -103,6 +113,29 @@ function callUpdateUserInfo(){
         }
     });
 }
+function callChangePassword(){
+    if(!userUpdatePassword.currentPassword || !userUpdatePassword.password || !userUpdatePassword.confirmPassword){
+        alertify.notify("Bạn phải nhập đầy đủ thông tin","error", 7)
+    }else if(userUpdatePassword.password != userUpdatePassword.confirmPassword){
+        alertify.notify("Mật khẩu xác nhận sai","error", 7)
+    }else{
+        $.ajax({
+            type: "put",
+            url: "/user/change-password",
+            data:userUpdatePassword,
+            success: function (response) {
+                $(".user-modal-password-alert-success").find("span").text(response.message);
+                $(".user-modal-password-alert-success").css("display","block");
+                
+                $("#input-btn-cancel-update-user-password").click();
+            },
+            error :function(error){
+                console.log(error)
+            }
+        });
+    }
+    
+}
 $(document).ready(function(){
     
     
@@ -141,6 +174,17 @@ $(document).ready(function(){
 
         $("#input-change-address").val(originUserInfo.address)
         $("#input-change-phone").val(originUserInfo.phone)
+    })
+
+    $('#input-btn-update-user-password').bind("click",function(){
+        callChangePassword();
+    })
+
+    $('#input-btn-cancel-update-user-password').bind("click",function(){
+        userUpdatePassword = {};
+        $("#input-change-current-password").val(null);
+        $("#input-change-new-password").val(null);
+        $("#input-change-confirm-new-password").val(null);
     })
     
 })

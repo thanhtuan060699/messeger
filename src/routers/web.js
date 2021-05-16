@@ -31,6 +31,7 @@ let initRouters=(app)=>{
     router.get("/logout",auth.getLogout);
     router.put("/user/update-avatar",user.updateAvatar);
     router.put("/user/update-info",user.updateUserInfo);
+    router.put("/user/change-password",user.changePassword);
     router.get("/contact/find-user/:keyword",contact.findUsersContact);
     router.post("/contact/add-new",contact.addNewContact);
     router.delete("/contact/remove-request-contact-sent",contact.removeRequestContactSent);

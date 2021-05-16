@@ -2,6 +2,7 @@ import multer from "multer"
 import {transErrors,transSuccess} from "./../../lang/vi"
 import uuidv4 from "uuid/v4"
 import {user} from "./../services/index"
+import bcrypt from "bcrypt"
 
 
 let storageAvatar= multer.diskStorage({
@@ -63,7 +64,22 @@ let updateUserInfo =async (req,res) =>{
         res.status(500).send(error)
     }
 }
+
+let changePassword=(req,res) =>{
+    try {
+        let changePassword = req.body;
+        user.changePassword(req.user._id, changePassword);
+
+        let result = {
+            message : transSuccess.user_change_password 
+        }
+        return res.status(200).send(result);
+    } catch (error) {
+        console.log(error);
+    }
+}
 module.exports = {
     updateAvatar: updateAvatar,
-    updateUserInfo : updateUserInfo
+    updateUserInfo : updateUserInfo,
+    changePassword : changePassword
 }
