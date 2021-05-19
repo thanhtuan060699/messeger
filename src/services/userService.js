@@ -11,6 +11,7 @@ let changePassword=(id, dataUpdate) =>{
     return new Promise(async (resolve, reject)=>{
         let currentUser = await UserModel.findUserById(id);
         let checkCurrentPassword = await currentUser.comparePassword(dataUpdate.currentPassword)
+        console.log(checkCurrentPassword)
         if(!checkCurrentPassword){
             return reject(transErrors.current_password_failed);
         }

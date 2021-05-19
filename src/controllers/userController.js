@@ -60,22 +60,23 @@ let updateUserInfo =async (req,res) =>{
         }
         return res.status(200).send(result)
     } catch (error) {
-        console.log(error)
-        res.status(500).send(error)
+        return res.status(500).send({message:transSuccess.error})
     }
 }
 
-let changePassword=(req,res) =>{
+let changePassword=async (req,res) =>{
     try {
         let changePassword = req.body;
-        user.changePassword(req.user._id, changePassword);
-
+        let results= await user.changePassword(req.user._id, changePassword);
         let result = {
+            status :200,
             message : transSuccess.user_change_password 
         }
         return res.status(200).send(result);
     } catch (error) {
-        console.log(error);
+        return res.status(200).send({
+            status :500,
+            message:error});
     }
 }
 module.exports = {

@@ -62,13 +62,28 @@ function updateUserInfo(){
         userInfo.phone=$(this).val()
     })
     $("#input-change-current-password").bind("change",function(){
-        userUpdatePassword.currentPassword=$(this).val()
+        if($(this).val().length<8){
+            alertify.notify("Mật khẩu phải từ 8 kí tự trở lên","error", 7)
+            $("#input-change-current-password").val(null);
+        }else{
+            userUpdatePassword.currentPassword=$(this).val()
+        }
     })
     $("#input-change-new-password").bind("change",function(){
-        userUpdatePassword.password=$(this).val()
+        if($(this).val().length<8){
+            alertify.notify("Mật khẩu phải từ 8 kí tự trở lên","error", 7)
+            $("#input-change-new-password").val(null);
+        }else{
+            userUpdatePassword.password=$(this).val()
+        }
     })
     $("#input-change-confirm-new-password").bind("change",function(){
-        userUpdatePassword.confirmPassword=$(this).val()
+        if($(this).val().length<8){
+            alertify.notify("Mật khẩu phải từ 8 kí tự trở lên","error", 7)
+            $("#input-change-confirm-new-password").val(null);
+        }else{
+            userUpdatePassword.confirmPassword=$(this).val()
+        }
     })
 }
 
@@ -124,21 +139,33 @@ function callChangePassword(){
             url: "/user/change-password",
             data:userUpdatePassword,
             success: function (response) {
-                $(".user-modal-password-alert-success").find("span").text(response.message);
-                $(".user-modal-password-alert-success").css("display","block");
-                
-                $("#input-btn-cancel-update-user-password").click();
+                console.log(response.message)
+                if(response.status ==200){
+                    $(".user-modal-password-alert-error").css("display","none");
+                    $(".user-modal-password-alert-success").css("display","none");
+                    $(".user-modal-password-alert-success").find("span").text(response.message);
+                    $(".user-modal-password-alert-success").css("display","block");
+                    $("#input-btn-cancel-update-user-password").click(); 
+                }else{
+                    $(".user-modal-password-alert-error").css("display","none");
+                    $(".user-modal-password-alert-success").css("display","none");
+                    $(".user-modal-password-alert-error").find("span").text(response.message);
+                    $(".user-modal-password-alert-error").css("display","block");
+                    $("#input-btn-cancel-update-user-password").click();
+                }
+                  
             },
-            error :function(error){
+            error : function(error){
                 console.log(error)
+                $(".user-modal-password-alert-error").find("span").text(error);
+                $(".user-modal-password-alert-error").css("display","block");
+                $("#input-btn-cancel-update-user-password").click();
             }
         });
     }
     
 }
 $(document).ready(function(){
-    
-    
     originAvatarSrc = $("#user-modal-avatar").attr("src")
     originUserInfo ={
         username : $("#input-change-username").val(),
