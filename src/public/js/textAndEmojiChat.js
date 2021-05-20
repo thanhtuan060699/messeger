@@ -36,6 +36,5 @@ socket.on("chat-text-emoji-response",function (result) {
     $(`.right`).find(`.chat[data-chat=${result.senderId}]`).append(messageOfFriend)
     nineScrollRight(result.senderId)
     $(`#write-chat-${result.senderId}`).val("")
-    currentEmojioneArea.find(".emojionearea-editor").text("")
     
 })
